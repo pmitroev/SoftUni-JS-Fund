@@ -23,16 +23,16 @@ function solve(text){
             
             if(currHealth <= 100){
                 health += Number(splitted[1]);
-                console.log(`You healed for ${splitted[1]}.`);
-                console.log(`Current health: ${currHealth}.`);
+                console.log(`You healed for ${splitted[1]} hp.`);
+                console.log(`Current health: ${currHealth} hp.`);
             }
 
             else if(currHealth > 100){
                 let diff = 100 - tempHealth;
                 health = 100;
 
-                console.log(`You healed for ${diff}.`);
-                console.log(`Current health: ${health}.`);
+                console.log(`You healed for ${diff} hp.`);
+                console.log(`Current health: ${health} hp.`);
             }
         } 
         
@@ -48,7 +48,7 @@ function solve(text){
             if(health > 0){
                 console.log(`You slayed ${splitted[0]}.`)
             } else{
-                console.log(`You died! Killed by ${splitted[0]}`);
+                console.log(`You died! Killed by ${splitted[0]}.`);
                 console.log(`Best room: ${i + 1}`);
                 notDead = false;
                 break;
