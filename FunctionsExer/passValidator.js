@@ -36,4 +36,4 @@ function solve(pass){
     }
 }
 
-solve('MyPass123');
+solve('logIn');
