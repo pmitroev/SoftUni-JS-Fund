@@ -1,16 +1,16 @@
 function solve(arr) {
-    let sequence = arr.shift().split(' ');
+    let sequence = arr.shift().trim().split(' ');
     let moves = 0;
 
-    while (sequence.length > 0 && arr[0] != 'end') {
+    while (sequence.length > 0 && arr[0].toLowerCase() != 'end') {
         let [firstIndex, secondIndex] = arr.shift().split(' ');
 
         moves++;
 
         if (firstIndex === secondIndex
-            || firstIndex > sequence.length
+            || firstIndex >= sequence.length
             || firstIndex < 0
-            || secondIndex > sequence.length
+            || secondIndex >= sequence.length
             || secondIndex < 0) {
 
             
