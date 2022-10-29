@@ -51,4 +51,4 @@ function solve(arr, entry, type){
     
 }
 
-solve([5, 10, 12, 5, 4, 20], 3, 'cheap');
+solve([5, 10, 12, 5, 4, 20], 3, 'expensive');
