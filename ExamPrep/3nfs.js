@@ -43,7 +43,7 @@ function solve(input) {
                 let fuel = Number(value1);
                 carObj[car].fuel += fuel;
                 if(carObj[car].fuel > 75) {
-                    console.log(`${car} refueled with ${75 - (carObj[car].fuel - fuel)}`);
+                    console.log(`${car} refueled with ${75 - (carObj[car].fuel - fuel)} liters`);
                     carObj[car].fuel = 75;
                 } else {
                     console.log(`${car} refueled with ${fuel} liters`);
