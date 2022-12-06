@@ -1,90 +1,63 @@
 function solve(input) {
     let password = input.shift();
-    let temp = '';
 
-    let line = input.shift();
+    while (input[0] != 'Complete') {
+        let [command, value1, value2] = input.shift().split(' ');
 
-    while (line != 'Complete') {
-        let args = line.split(' ');
+        if (value1 == 'Upper') {
+            let index = Number(value2);
 
-        switch (args[0]) {
-            case 'Make': {
-                let index = Number(args[2]);
-                if (args[1] === 'Upper') {
-                    let letter = password.charAt(index);
-                    password = password.replace(letter, letter.toUpperCase());
-                    if (password.length >= 8) {
-                        console.log(password);
-                    } else {
-                        break;
-                    }
-                    
-                } else {
-                    let letter = password.charAt(index);
-                    password = password.replace(letter, letter.toLowerCase());
-                    
-                    
-                }
-                break;
+            let letter = password.charAt(index);
+            password = password.replace(letter, letter.toUpperCase());
+            console.log(password);
+        } else if (value1 == 'Lower') {
+            let index = Number(value2);
+
+            let letter = password.charAt(index);
+            password = password.replace(letter, letter.toUpperCase());
+            console.log(password);
+        } else if (command == 'Insert') {
+            let index = Number(value1);
+            let char = value2;
+
+            if (index >= 0 || index < password.length) {
+                password = password.substring(0, index) + char + password.substring(index);
             }
-
-            case 'Add': {
-                let index = Number(args[1]);
-                let char = args[2];
-
-                if (index < 0 || index > password.length) {
-                    break;
-                } else {
-                    temp = password.slice(0, index) + char + password.slice(index);
-                    password = temp;
-                }
-                if (password.length >= 8) {
-                    console.log(password);
-                }
-
-                break;
+            console.log(password);
+        } else if (command == 'Replace') {
+            if (password.includes(value1)) {
+                const newChar = String.fromCharCode(value1.charCodeAt() + Number(value2));
+                password = password.split(value1).join(newChar);
             }
-
-            case 'Replace': {
-                let char = args[1];
-                let  value = Number(args[2]);
-
-                let charValue = char.charCodeAt();
-                let sum = charValue + value;
-                let newChar = String.fromCharCode(sum);
-                
-                while(password.includes(char)) {
-                    temp = password.replace(char, newChar);
-                    password = temp;
-                }
-
-                console.log(password);
-                break;
+            console.log(password);
+        } else if (command == 'Validation') {
+            if (password.length < 8) {
+                console.log("Password must be at least 8 characters long!");
             }
-
-            case 'Validation': {
-                if (password.length < 8) {
-                    console.log('Password must be at least 8 characters long');
-                } else if (p)
-
-                break;
+            if (/\W/g.test(password)) {
+                cconsole.log("Password must consist only of letters, digits and _!");
+            }
+            if (!/[A-Z]/g.test(password)) {
+                console.log("Password must consist at least one uppercase letter!");
+            }
+            if (!/[a-z]/g.test(password)) {
+                console.log("Password must consist at least one lowercase letter!");
+            }
+            if (!/\d/g.test(password)) {
+                console.log("Password must consist at least one digit!");
             }
         }
 
-        line = input.shift();
+        
     }
 }
 
-function isNum(str) {
-    return /\d+/.test(str);
-}
 
-solve([
-    'invalidpassword*',
-    // 'Add 2 p',
-    // 'Replace i -50',
-    // 'Replace * 10',
-    'Make Upper 2',
+
+
+solve(['123456789',
+    'Insert 3 R',
+    'Replace 5 15',
     'Validation',
-    'Complete'
-])
+    'Make Lower 3',
+    'Complete'])
